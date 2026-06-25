@@ -3,9 +3,14 @@ desktop.ini
 Thumbs.db
 
 # Dependencies and build output
-node_modules/
-dist/
-build/
+**/node_modules/
+**/dist/
+**/build/
+**/client/.next
+**/.next
+**/bin/
+**/obj/
+**/.vs/
 
 # Local environment and secrets
 .env
@@ -24,5 +29,5 @@ npm-debug.log*
 coverage/
 playwright-report/
 test-results/
-.cache/
-OneDrive_2026-06-23/
+.cache/ 
+OneDrive_2026-06-23/ 
