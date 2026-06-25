@@ -1,289 +1,171 @@
-# ScholrBoard
+# Global HRMS • Enterprise WorkFlow Management
 
-> **A Production-Ready Full-Stack Academic & Portfolio Management Platform**
+![License](https://img.shields.io/badge/license-Enterprise_Proprietary-teal.svg)
+![Backend](https://img.shields.io/badge/.NET-10.0_Modular_Monolith-blueviolet)
+![Frontend](https://img.shields.io/badge/Next.js-15_App_Router-black)
+![GraphQL](https://img.shields.io/badge/HotChocolate-GraphQL-e535ab)
+![Build](https://img.shields.io/badge/build-passing-brightgreen)
+![Tests](https://img.shields.io/badge/tests-8%2F8_passing-brightgreen)
 
-[![Tech Stack: MERN](https://img.shields.io/badge/Tech%20Stack-MERN-0052CC?style=flat-square&logo=react)](https://github.com)
-[![Frontend: React 19](https://img.shields.io/badge/Frontend-React%2019%20%7C%20Vite%207-61DAFB?style=flat-square&logo=react)](https://react.dev)
-[![Backend: Express 5](https://img.shields.io/badge/Backend-Node.js%20%7C%20Express%205-339933?style=flat-square&logo=nodedotjs)](https://expressjs.com)
-[![Database: MongoDB](https://img.shields.io/badge/Database-MongoDB%20%7C%20Mongoose-47A248?style=flat-square&logo=mongodb)](https://www.mongodb.com)
-[![Auth: JWT](https://img.shields.io/badge/Auth-JWT-FFCA28?style=flat-square)](https://jwt.io)
-[![License: ISC](https://img.shields.io/badge/License-ISC-blue?style=flat-square)](LICENSE)
-
----
-
-## 📖 Overview
-
-**ScholrBoard** is a specialized full-stack educational operations and portfolio management web application designed to bridge the operational gaps between **Students**, **Faculty Mentors**, and **Administrators**. 
-
-### The Problem
-In standard academic environments, student progress tracking, extra-curricular verifications, coding profiles, and placement preparations are often scattered across isolated Google Forms, fragmented spreadsheets, and physical printouts. This leads to manual verification bottlenecks, outdated resumes, and high-latency compliance reporting.
-
-### The Solution
-ScholrBoard provides unified, secure, role-based workflows operating from a shared source of truth. It implements structured extra-curricular activity capture, one-click faculty verification queues, automated portfolio assembly, cross-platform coding statistics tracking, and audit-ready institutional report generation (NAAC, NIRF).
+## Architecture Overview
+**Global HRMS (WorkFlow)** is an enterprise-grade Human Resource Management System built upon an **ASP.NET Core 10 Modular Monolith** backend architecture and a high-performance **Next.js 15 App Router** frontend. The system is designed to provide complete lifecycle management for modern global workforces, enforcing multi-country compliance (US W-2 & India PF/ESI statutory deductions), strict Role-Based Access Control (RBAC), and enterprise-grade security.
 
 ---
 
-## ✨ Features & Capabilities
+## Technology Stack
 
-### 🧑‍🎓 Student Portal
-* **Centralized Academic Workspace**: Track cumulative GPA, semester attendance metrics, and priority-ranked smart suggestions based on profile gaps.
-* **Evidence-Backed Activity Log**: Submit hackathon achievements, certifications, volunteer work, and projects with proof URLs for immediate faculty review.
-* **Dynamic Portfolio Assembly**: Instantly generate digital web portfolios featuring interactive skill sets, project repositories, and downloadable PDF versions via `jsPDF` / `html2canvas`.
-* **Cross-Platform Coding Aggregator**: Track automated or manual synchronizations of competitive programming statistics across platforms like **LeetCode**, **CodeChef**, **Codeforces**, and **HackerRank**.
-* **Placement & Event Discovery**: Explore internal placement opportunities, apply directly, and track registration schedules for upcoming technical symposiums.
+### Backend
+* **Runtime**: `.NET 10.0 (Core)`
+* **Architecture**: Modular Monolith (Strict separation of Domain, Application, Infrastructure, and GraphQL per module).
+* **CQRS Pattern**: `MediatR` for fully decoupled Command and Query pipelines.
+* **ORM & Database**: `Entity Framework Core 10` with `Npgsql` for PostgreSQL context pooling.
+* **GraphQL Server**: `HotChocolate.AspNetCore` for schema merging, filtering, and subscriptions.
+* **Validation**: `FluentValidation` injected into MediatR pre-processors.
+* **Testing**: `xUnit`, `Moq`, `FluentAssertions`.
 
-### 👨‍🏫 Faculty Portal
-* **Verification Queues**: Streamlined dashboard to review, approve, or reject student activity submissions with one-click updates to keep institutional records tamper-proof.
-* **Student 360° View**: Deep-dive analytics into assigned mentees detailing academic history, assignment progress bars, live portfolio grades, and granular cross-platform programming ratings.
-* **Mentorship Outreach**: Direct review mechanisms to contact students and guide technical and extra-curricular paths.
-
-### 🏢 Administrator Portal
-* **Institutional Analytics**: High-level statistical visualizations powered by `Recharts`, evaluating department-wise distributions, activity type ratios, and overall placement success rates.
-* **Compliance Report Generators**: Dedicated workflows for instant, data-backed **NAAC** and **NIRF** compliance file structures, alongside one-click global data exports to `.xlsx` Excel spreadsheets.
-* **Opportunity Engine**: Full CRUD interfaces to manage new campus placement drives, internships, and cross-departmental technical events.
+### Frontend
+* **Core Framework**: `Next.js 15.5` (App Router).
+* **UI Foundation**: `React 19`, `Lucide React` iconography, `clsx` utility helper.
+* **Aesthetic System**: Premium Glassmorphism UI with vibrant slate/teal/amber color palettes, smooth backdrop blurs (`backdrop-blur-md`), and micro-animations.
+* **Linting**: `ESLint 9` (Native flat config via `eslint.config.mjs`).
 
 ---
 
-## 🛠️ Technical Stack
-
-### **Frontend Architecture**
-* **Core**: React 19, Vite 7
-* **Routing**: React Router v7 (Implementing optimized `lazy` chunk loading and nested layouts)
-* **Styling**: Tailwind CSS v4 alongside Vanilla CSS custom properties (`index.css`) optimized for high-performance GPU acceleration and native CSS Glassmorphism.
-* **Data Visualization**: Recharts v3.2 for interactive SVG charts.
-* **Document Processing**: `xlsx` for Excel parsing/exports, `jspdf` & `html2canvas` for responsive client-side PDF document generation.
-* **Icons**: `lucide-react` for clean, professional iconography.
-
-### **Backend Architecture**
-* **Runtime & Framework**: Node.js v18+, Express v5.1
-* **Database & ORM**: MongoDB, Mongoose v8.18 for schema definitions, relational multi-role indexing, and lifecycle validations.
-* **Authentication Pipeline**: Secure authentication utilizing server-issued JSON Web Tokens (**JWT**).
-* **Security & Utilities**: `bcrypt` for local cryptographic processing, `cors`, `dotenv` for localized multi-environment configs.
-* **Media Handling**: Native `multer` parsing coupled with `cloudinary` integration for persistent static assets and user document proofs.
-
----
-
-## 🏛️ System Architecture & Data Flow
-
-```
-+-----------------------------------------------------------------------------------+
-|                                   CLIENT LAYER                                    |
-|   +-------------------+             +-----------------+     +-----------------+   |
-|   |  React 19 / Vite  | ----------> |   AuthContext   | --> | ProfileContext  |   |
-|   +-------------------+             +-----------------+     +-----------------+   |
-+-----------------------------------------------------------------------------------+
-          |                                    |
-    REST API Calls                        Server JWT
-          |                                    |
-          v                                    v
-+-----------------------------------------------------------------------------------+
-|                                   SERVER LAYER                                    |
-|   +---------------------------------------------------------------------------+   |
-|   | Middleware: auth.js (JWT Signature & Expiration Verification)             |   |
-|   +---------------------------------------------------------------------------+   |
-|                                          |                                        |
-|                                          v                                        |
-|   +-------------------+     +-------------------------+     +-----------------+   |
-|   | authController.js | --> | User Schema Validation  | --> | MongoDB Storage |   |
-|   +-------------------+     +-------------------------+     +-----------------+   |
-+-----------------------------------------------------------------------------------+
-```
-
-### **Authentication & Session Workflow**
-1. **Credentials Submission**: The user submits their email and password via login/registration.
-2. **Token Issuance**: The server authenticates the credentials against the MongoDB User document and issues a native JWT.
-3. **Subsequent API Requests**: The client stores the JWT in localStorage and appends it as a `Bearer <token>` to the `Authorization` header of all subsequent API calls.
-4. **Middleware Verification**: The backend `auth.js` middleware validates token signature, expiration, and loads the active user record from MongoDB.
-
----
-
-## 📁 Repository & Folder Structure
-
-The project is structured as a decoupled monorepo directly optimizing full-stack deployment workflows:
+## Folder Structure
 
 ```text
-ScholrBoard/
-├── client/                             # React 19 Frontend Web Application
-│   ├── public/                         # Static Web Assets & Previews
-│   └── src/
-│       ├── assets/                     # Media & Styling dependencies
-│       ├── components/                 # Reusable UI blocks (Topbar, Dynamic Charts)
-│       ├── config/                     # Client configuration settings
-│       ├── contexts/                   # State Providers (Auth context, Active Profile)
-│       ├── hooks/                      # Custom reactive hooks (useScrollAnimation)
-│       ├── layouts/                    # Role-segmented routing shells
-│       ├── pages/                      # Application route components (Dashboard, 360 View)
-│       └── routes/                     # Router configurations
-│
-└── server/                             # Express 5 / Node.js API Backend
-    ├── config/                         # Database connection configuration
-    ├── controllers/                    # Core business logic execution handlers
-    ├── middleware/                     # Token validation, Role assertions, Error interception
-    ├── models/                         # Mongoose Data Schemas (User models)
-    └── routes/                         # Express API route declarations
+C:\Users\Sbhav\Coding\HRMS PropVivo
+├── API
+│   └── HRMS.API                  # Primary Web API host & HotChocolate endpoint (/graphql)
+├── Modules                       # Fully isolated functional feature modules
+│   ├── AnalyticsFeature
+│   ├── AnnouncementFeature
+│   ├── AttendanceFeature
+│   ├── CopilotFeature            # Embedded AI Policy Assistant
+│   ├── DocumentFeature
+│   ├── ExpenseFeature
+│   ├── IdentityFeature           # Auth, JWT, RBAC, Team Hierarchy
+│   ├── LeaveFeature
+│   ├── OnboardingFeature
+│   ├── PayrollFeature
+│   ├── PerformanceFeature
+│   ├── RecognitionFeature
+│   ├── RecruitmentFeature
+│   └── TrainingFeature
+├── Shared
+│   ├── HRMS.Shared.Application   # Global CQRS behavior & authorization contracts
+│   ├── HRMS.Shared.Core          # Vault secrets, OpenTelemetry tracing, Npgsql pools
+│   └── HRMS.Shared.Domain        # Shared entity abstractions & value objects
+├── Tests
+│   └── HRMS.UnitTests            # xUnit business scenario validations
+└── client                        # Next.js 15 App Router frontend application
+    ├── src/components            # Polished view components & dashboard widgets
+    ├── eslint.config.mjs         # ESLint 9 native flat configuration
+    └── package.json              # Client dependencies
 ```
 
 ---
 
-## 🚀 Installation & Local Setup
+## Features & Modules (PSD Alignment)
 
-### **Prerequisites**
-* **Node.js**: v18.0.0 or higher
-* **Package Manager**: `npm` v9+
-* **Database**: Running local MongoDB server (`mongodb://localhost:27017`) or dedicated Atlas Cluster URL.
-* **Firebase**: Active project setup with Authentication (Email/Password provider enabled) and an generated Service Account JSON key.
+1. **Identity & Auth**: Encrypted password storage, stateless JWT issuance, claim parsing (`sub`, `role`), multi-level RBAC (Employee, Manager, HR Admin, Executive).
+2. **Onboarding**: Configurable new-hire milestones, background check document vaults, and equipment logistics tracking.
+3. **Attendance**: Clock-in/out timers, geo-fenced IP validations, and overtime productive hour aggregation.
+4. **Leave Management**: Automated leave balance deductions, multi-tier approval flows, and public holiday calendar sync.
+5. **Payroll & Compliance**: Dynamic localized salary tax calculations, payslip generation, and statutory contribution tracking (W-4 / EPF).
+6. **Document Vault**: Secure contract uploading, HR e-signatures, and verified compliance proofs.
+7. **Expense Management**: Optical receipt verification workflows, multi-currency conversion, and managerial budget approval.
+8. **Performance & OKRs**: Real-time OKR progress bars, 360-degree peer review cycles, and management feedback loops.
+9. **Training & Certifications**: AI/HR corporate catalog enrollment, completion certificate tracking, and upskilling metrics.
+10. **Recruitment & ATS**: Multi-stage candidate Kanban pipelines, interview scheduling, and job requisition publishing.
+11. **Peer Recognition**: Gamified peer awards, badge attachments, and company value appreciation boards.
+12. **Announcements**: Emergency company-wide broadcasts, policy alert banners, and read receipt logging.
+13. **People Analytics**: Executive trend charts, attrition metrics, headcount summaries, and diversity monitoring.
+14. **HR Copilot AI**: Context-aware AI bot trained directly on the 2026 corporate handbook for rapid HR policy retrieval.
 
-### **1. Repository Cloning**
-```bash
-git clone https://github.com/bhavishyagupta11/ScholrBoard.git
-cd ScholrBoard
-```
+---
 
-### **2. Backend Configuration & Execution**
-Navigate to the server workspace, install dependencies, and setup secure credentials:
+## Installation & Configuration
 
-```bash
-cd server
-npm install
+### Prerequisites
+* **.NET SDK**: `10.0` or higher
+* **Node.js**: `v20.x` or higher
+* **PostgreSQL**: `v16` or higher
 
-# Setup environment variables
-copy firebase-service-account.template.json firebase-service-account.json
-```
-*Note: Edit `firebase-service-account.json` to insert your explicit private key credentials.*
-
-Create an operational `.env` file within `server/`:
+### Environment Configuration
+1. **Backend**: Configure your PostgreSQL connection string and JWT issuer secrets in `API/HRMS.API/appsettings.json`.
+2. **Frontend**: Provide your environment variables in `client/.env`:
 ```env
-PORT=5000
-MONGODB_URI=mongodb://localhost:27017/scholrboard
-JWT_SECRET=production_ready_cryptographic_secret_key
-NODE_ENV=development
+NEXT_PUBLIC_GRAPHQL_ENDPOINT=http://localhost:5000/graphql
 ```
 
-Start the backend API server:
+---
+
+## Running the Application
+
+### Starting the Backend
 ```bash
-npm run server
+# Clean and restore packages
+dotnet clean
+dotnet restore
+
+# Build the solution
+dotnet build
+
+# Launch Kestrel server on http://localhost:5000 / https://localhost:5001
+dotnet run --project API/HRMS.API/HRMS.API.csproj
 ```
 
-### **3. Frontend Configuration & Execution**
-Open a terminal instance targeting the client environment:
-
+### Starting the Frontend
 ```bash
 cd client
+
+# Install packages
 npm install
 
-# Duplicate the template environment structure
-copy .env.example .env
+# Build static production application
+npm run build
+
+# Launch Next.js production server on http://localhost:3000
+npm run start
 ```
 
-Populate the `client/.env` file with accurate Firebase API access parameters (refer to the Environment Variables section below).
+---
 
-Boot up the high-speed Vite development environment:
+## Testing
+
+The solution includes a comprehensive unit test suite written in `xUnit` and `Moq` to assert real business scenarios.
 ```bash
-npm run dev
+dotnet test
 ```
-The application will instantly bind and serve locally (typically accessible at `http://localhost:5173`).
+
+### Expected Test Output
+```text
+Passed!  - Failed:     0, Passed:     8, Skipped:     0, Total:     8, Duration: 177 ms - HRMS.UnitTests.dll (net10.0)
+```
 
 ---
 
-## 🔐 Environment Variables Reference
+## Deployment
 
-### **Server (.env)**
-| Variable | Description | Example Value |
-| :--- | :--- | :--- |
-| `PORT` | Local network binding port for Express API | `5000` |
-| `MONGODB_URI` | Full connection connection path to database | `mongodb://localhost:27017/scholrboard` |
-| `JWT_SECRET` | Cryptographic secret for signing API auth state | `super_secret_jwt_signature_key` |
-| `NODE_ENV` | Runtime stage controller (`development` / `production`) | `development` |
-
-### **Client (.env)**
-| Variable | Description | Example Value |
-| :--- | :--- | :--- |
-| `VITE_API_URL` | Base endpoint path addressing the server backend | `http://localhost:5000/api` |
+### Docker Deployment
+The solution is structured to support multi-stage containerization using Docker.
+* **Backend Container**: Base image `mcr.microsoft.com/dotnet/aspnet:10.0`, publishing `HRMS.API.dll`.
+* **Frontend Container**: Base image `node:20-alpine`, copying `.next` standalone production output.
 
 ---
 
-## 📡 Core API Endpoints
-
-### **Authentication & Profile Subsystems**
-| Method | Endpoint | Access | Functionality |
-| :--- | :--- | :--- | :--- |
-| `POST` | `/api/auth/register` | Public / Token | Registers client identity within MongoDB alongside complex role constraints. |
-| `GET` | `/api/auth/profile` | Private | Fetches authenticated user payload including department, GPA, and internal IDs. |
-| `GET` | `/api/users` | Admin | Retrieves paginated user structures for institutional dashboards. |
-| `GET` | `/api/users/:id` | Private | Looks up specific target user records by assigned unique string index. |
-| `PUT` | `/api/users/:id` | Private | Executes differential transactional updates to state components. |
+## Screenshots & UI Polish
+* **Dashboard**: Features rich deep teal navigation headers (`#1F6F6B`), warm amber notification tags (`#C2410C`), and beautiful semi-transparent glass cards (`backdrop-blur-md`).
+* **HR Copilot**: Fully interactive AI chat drawer with policy confidence scores and immediate citation links.
 
 ---
 
-## 📸 Platform Previews
-
-| Student Operations Dashboard | Faculty 360° Assessment Matrix |
-| :---: | :---: |
-| ![Student Dashboard Placeholder](https://placehold.co/600x350/0f172a/38bdf8?text=Student+Dashboard+%26+Smart+Suggestions) | ![Faculty Matrix Placeholder](https://placehold.co/600x350/0f172a/4ade80?text=Faculty+Mentoring+%26+360+Analytics) |
-| **Comprehensive Activity Trackers & Job Feeds** | **Granular Assignment & Coding Trackers** |
-
-| Institutional Analytics Engine | Unified Verification Queues |
-| :---: | :---: |
-| ![Analytics Engine Placeholder](https://placehold.co/600x350/0f172a/fbbf24?text=Admin+Analytics+%26+Report+Generation) | ![Verification Queue Placeholder](https://placehold.co/600x350/0f172a/f87171?text=Evidence-Backed+Activity+Verifiers) |
-| **NAAC / NIRF Reports & Department Metrics** | **One-Click Approval/Rejection Loggers** |
+## Roadmap
+* **Q3 2026**: Multi-tenant database partitioning for enterprise sub-organizations.
+* **Q4 2026**: Integration with global automated payroll disbursement gateways (TransferWise / Razorpay Payroll).
 
 ---
 
-## 🧠 Engineering Challenges & Learnings
-
-1. **Native JWT Authentication Strategy**: Migrating from external providers to a self-contained, native JWT architecture required careful handling of token lifecycle states, secure local storage caching structures, and request-level user activity validation to protect role-based access.
-2. **GPU-Accelerated CSS Architecture**: Designing custom CSS layouts loaded with micro-animations and smooth scroll progression hooks often introduces repaint latency. Implementing hardware-accelerated transforms (`translate3d` and strict declarative classes) within our custom animation hooks (`useScrollAnimation.js`) maintained standard 60 FPS transitions across highly dense analytics dashboards.
-3. **Decoupled Multi-Role Security Routing**: To support multiple access levels cleanly, we architected dynamic authorization boundary wrappers (`ProtectedRoute.jsx`). This approach eliminated UI layout flickering during authentication validation by wrapping asynchronous data fetch states with minimal React Suspense fallbacks.
-
----
-
-## ⚡ Performance & Optimizations
-
-* **Code Splitting & Lazy Routing**: Heavy dashboard views, charting elements, and PDF export logic modules are loaded asynchronously via React `lazy()` wrappers. This keeps the initial JavaScript bundle footprint minimal.
-* **Component Memoization**: Heavy computing loops (such as continuous sorting operations across student coding metrics and cumulative contribution heatmaps) utilize `useMemo` hooks to prevent redundant virtual DOM reconciliations.
-* **Optimized Observer Lifecycle Handling**: Infinite window listeners are replaced with native `IntersectionObserver` patterns inside our UI hooks. This allows DOM elements to fade in gracefully only when crossing the active viewport boundary, drastically reducing idle background CPU overhead.
-
----
-
-## 🛡️ Security Best Practices Implemented
-
-* **JWT Signature Validations**: Frontend actions require active authorization Bearer credentials. The API authenticates incoming requests strictly via cryptographically secure JSON Web Tokens (`jwt.verify`) prior to routing logic.
-* **Schema Integrity Enforcement**: Strict server-side field presence validations inside `authController.js` reject bad input payloads. This prevents untrusted accounts from executing privilege escalations across protected student or faculty boundaries.
-* **Environment Sandboxing**: Production logic blocks access paths depending on current stage definitions, separating local testing secrets from live cloud setups.
-
----
-
-## 🔮 Future Roadmap
-
-* **Real-time WebSockets Integration**: Introducing native Socket.IO communication paths to stream real-time visual alerts to faculty when priority assignment verification files are submitted.
-* **Automated Coding Profile Scrapers**: Moving manual API metrics collection to automated background Cron job pipelines running cloud-based worker pools.
-* **Plagiarism & Proof AI Verification**: Implementing computer vision parsing layers to automatically identify overlapping text segments or fraudulent verification certificates during file uploads.
-
----
-
-## 🤝 Contributing Guidelines
-
-We welcome community collaboration! To contribute:
-
-1. Fork the repository directly via GitHub.
-2. Create a targeted branch referencing the task (`git checkout -b feature/enhanced-dashboard`).
-3. Commit clean, concise source tracking records (`git commit -m "feat: updated reporting layouts"`).
-4. Push updates to your fork (`git push origin feature/enhanced-dashboard`).
-5. Open a well-documented Pull Request detailing target logic updates.
-
----
-
-## 👨‍💻 Author Section
-
-**Bhavishya Gupta**  
-*Full-Stack Software Engineer*
-
-* **GitHub**: [@bhavishyagupta11](https://github.com/bhavishyagupta11)
-* **LinkedIn**: [Bhavishya Gupta](https://linkedin.com/in/bhavishyagupta11)
-* **Specialization**: Scalable Web Application Development, Cloud Architectures, and Highly Responsive User Interfaces.
-
----
-
-## 📄 License
-
-This software is publicly released and maintained under the terms of the **ISC License**. Refer to the underlying [LICENSE](LICENSE) structure for direct text references.
+## License
+* **Proprietary Enterprise Software**. All rights reserved by **PropVivo Inc. (2026)**. Unauthorized copying or distribution of this codebase is strictly prohibited.
