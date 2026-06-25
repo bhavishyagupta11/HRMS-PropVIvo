@@ -1,0 +1,110 @@
+<Solution>
+  <Folder Name="/API/">
+    <Project Path="API/HRMS.API/HRMS.API.csproj" Id="6b638a6a-5610-4a2b-aa1e-dfbef58de721" />
+  </Folder>
+  <Folder Name="/Modules/" />
+  <Folder Name="/Modules/IdentityFeature/">
+    <Project Path="Modules/IdentityFeature/IdentityFeature.Application/IdentityFeature.Application.csproj" Id="e1b2c3d4-e5f6-7890-abcd-ef1234567891" />
+    <Project Path="Modules/IdentityFeature/IdentityFeature.Domain/IdentityFeature.Domain.csproj" Id="e2c3d4e5-f6a7-8901-bcde-f12345678912" />
+    <Project Path="Modules/IdentityFeature/IdentityFeature.GraphQL/IdentityFeature.GraphQL.csproj" Id="e3d4e5f6-a7b8-9012-cdef-123456789023" />
+    <Project Path="Modules/IdentityFeature/IdentityFeature.Infrastructure/IdentityFeature.Infrastructure.csproj" Id="e4e5f6a7-b8c9-0123-def0-234567890134" />
+  </Folder>
+  <Folder Name="/Modules/OnboardingFeature/">
+    <Project Path="Modules/OnboardingFeature/OnboardingFeature.Application/OnboardingFeature.Application.csproj" Id="a1b2c3d4-e5f6-7890-abcd-ef1234567801" />
+    <Project Path="Modules/OnboardingFeature/OnboardingFeature.Domain/OnboardingFeature.Domain.csproj" Id="a2b3c4d5-f6a7-8901-bcde-f12345678902" />
+    <Project Path="Modules/OnboardingFeature/OnboardingFeature.GraphQL/OnboardingFeature.GraphQL.csproj" Id="a3c4d5e6-a7b8-9012-cdef-123456789003" />
+    <Project Path="Modules/OnboardingFeature/OnboardingFeature.Infrastructure/OnboardingFeature.Infrastructure.csproj" Id="a4d5e6f7-b8c9-0123-def0-234567890104" />
+  </Folder>
+  <Folder Name="/Modules/AttendanceFeature/">
+    <Project Path="Modules/AttendanceFeature/AttendanceFeature.Application/AttendanceFeature.Application.csproj" Id="b1b2c3d4-e5f6-7890-abcd-ef1234567801" />
+    <Project Path="Modules/AttendanceFeature/AttendanceFeature.Domain/AttendanceFeature.Domain.csproj" Id="b2b3c4d5-f6a7-8901-bcde-f12345678902" />
+    <Project Path="Modules/AttendanceFeature/AttendanceFeature.GraphQL/AttendanceFeature.GraphQL.csproj" Id="b3c4d5e6-a7b8-9012-cdef-123456789003" />
+    <Project Path="Modules/AttendanceFeature/AttendanceFeature.Infrastructure/AttendanceFeature.Infrastructure.csproj" Id="b4d5e6f7-b8c9-0123-def0-234567890104" />
+  </Folder>
+  <Folder Name="/Modules/LeaveFeature/">
+    <Project Path="Modules/LeaveFeature/LeaveFeature.Application/LeaveFeature.Application.csproj" Id="c1b2c3d4-e5f6-7890-abcd-ef1234567801" />
+    <Project Path="Modules/LeaveFeature/LeaveFeature.Domain/LeaveFeature.Domain.csproj" Id="c2b3c4d5-f6a7-8901-bcde-f12345678902" />
+    <Project Path="Modules/LeaveFeature/LeaveFeature.GraphQL/LeaveFeature.GraphQL.csproj" Id="c3c4d5e6-a7b8-9012-cdef-123456789003" />
+    <Project Path="Modules/LeaveFeature/LeaveFeature.Infrastructure/LeaveFeature.Infrastructure.csproj" Id="c4d5e6f7-b8c9-0123-def0-234567890104" />
+  </Folder>
+  <Folder Name="/Modules/PayrollFeature/">
+    <Project Path="Modules/PayrollFeature/PayrollFeature.Application/PayrollFeature.Application.csproj" />
+    <Project Path="Modules/PayrollFeature/PayrollFeature.Domain/PayrollFeature.Domain.csproj" />
+    <Project Path="Modules/PayrollFeature/PayrollFeature.GraphQL/PayrollFeature.GraphQL.csproj" />
+    <Project Path="Modules/PayrollFeature/PayrollFeature.Infrastructure/PayrollFeature.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/Modules/DocumentFeature/">
+    <Project Path="Modules/DocumentFeature/DocumentFeature.Application/DocumentFeature.Application.csproj" />
+    <Project Path="Modules/DocumentFeature/DocumentFeature.Domain/DocumentFeature.Domain.csproj" />
+    <Project Path="Modules/DocumentFeature/DocumentFeature.GraphQL/DocumentFeature.GraphQL.csproj" />
+    <Project Path="Modules/DocumentFeature/DocumentFeature.Infrastructure/DocumentFeature.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/Modules/ExpenseFeature/">
+    <Project Path="Modules/ExpenseFeature/ExpenseFeature.Application/ExpenseFeature.Application.csproj" />
+    <Project Path="Modules/ExpenseFeature/ExpenseFeature.Domain/ExpenseFeature.Domain.csproj" />
+    <Project Path="Modules/ExpenseFeature/ExpenseFeature.GraphQL/ExpenseFeature.GraphQL.csproj" />
+    <Project Path="Modules/ExpenseFeature/ExpenseFeature.Infrastructure/ExpenseFeature.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/Modules/PerformanceFeature/">
+    <Project Path="Modules/PerformanceFeature/PerformanceFeature.Application/PerformanceFeature.Application.csproj" />
+    <Project Path="Modules/PerformanceFeature/PerformanceFeature.Domain/PerformanceFeature.Domain.csproj" />
+    <Project Path="Modules/PerformanceFeature/PerformanceFeature.GraphQL/PerformanceFeature.GraphQL.csproj" />
+    <Project Path="Modules/PerformanceFeature/PerformanceFeature.Infrastructure/PerformanceFeature.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/Modules/TrainingFeature/">
+    <Project Path="Modules/TrainingFeature/TrainingFeature.Application/TrainingFeature.Application.csproj" />
+    <Project Path="Modules/TrainingFeature/TrainingFeature.Domain/TrainingFeature.Domain.csproj" />
+    <Project Path="Modules/TrainingFeature/TrainingFeature.GraphQL/TrainingFeature.GraphQL.csproj" />
+    <Project Path="Modules/TrainingFeature/TrainingFeature.Infrastructure/TrainingFeature.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/Modules/RecruitmentFeature/">
+    <Project Path="Modules/RecruitmentFeature/RecruitmentFeature.Application/RecruitmentFeature.Application.csproj" />
+    <Project Path="Modules/RecruitmentFeature/RecruitmentFeature.Domain/RecruitmentFeature.Domain.csproj" />
+    <Project Path="Modules/RecruitmentFeature/RecruitmentFeature.GraphQL/RecruitmentFeature.GraphQL.csproj" />
+    <Project Path="Modules/RecruitmentFeature/RecruitmentFeature.Infrastructure/RecruitmentFeature.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/Modules/RecognitionFeature/">
+    <Project Path="Modules/RecognitionFeature/RecognitionFeature.Application/RecognitionFeature.Application.csproj" />
+    <Project Path="Modules/RecognitionFeature/RecognitionFeature.Domain/RecognitionFeature.Domain.csproj" />
+    <Project Path="Modules/RecognitionFeature/RecognitionFeature.GraphQL/RecognitionFeature.GraphQL.csproj" />
+    <Project Path="Modules/RecognitionFeature/RecognitionFeature.Infrastructure/RecognitionFeature.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/Modules/AnnouncementFeature/">
+    <Project Path="Modules/AnnouncementFeature/AnnouncementFeature.Application/AnnouncementFeature.Application.csproj" />
+    <Project Path="Modules/AnnouncementFeature/AnnouncementFeature.Domain/AnnouncementFeature.Domain.csproj" />
+    <Project Path="Modules/AnnouncementFeature/AnnouncementFeature.GraphQL/AnnouncementFeature.GraphQL.csproj" />
+    <Project Path="Modules/AnnouncementFeature/AnnouncementFeature.Infrastructure/AnnouncementFeature.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/Modules/AnalyticsFeature/">
+    <Project Path="Modules/AnalyticsFeature/AnalyticsFeature.Application/AnalyticsFeature.Application.csproj" />
+    <Project Path="Modules/AnalyticsFeature/AnalyticsFeature.Domain/AnalyticsFeature.Domain.csproj" />
+    <Project Path="Modules/AnalyticsFeature/AnalyticsFeature.GraphQL/AnalyticsFeature.GraphQL.csproj" />
+    <Project Path="Modules/AnalyticsFeature/AnalyticsFeature.Infrastructure/AnalyticsFeature.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/Modules/CopilotFeature/">
+    <Project Path="Modules/CopilotFeature/CopilotFeature.Application/CopilotFeature.Application.csproj" />
+    <Project Path="Modules/CopilotFeature/CopilotFeature.Domain/CopilotFeature.Domain.csproj" />
+    <Project Path="Modules/CopilotFeature/CopilotFeature.GraphQL/CopilotFeature.GraphQL.csproj" />
+    <Project Path="Modules/CopilotFeature/CopilotFeature.Infrastructure/CopilotFeature.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/Modules/ContributionsFeature/">
+    <Project Path="Modules/ContributionsFeature/ContributionsFeature.Application/ContributionsFeature.Application.csproj" />
+    <Project Path="Modules/ContributionsFeature/ContributionsFeature.Domain/ContributionsFeature.Domain.csproj" />
+    <Project Path="Modules/ContributionsFeature/ContributionsFeature.GraphQL/ContributionsFeature.GraphQL.csproj" />
+    <Project Path="Modules/ContributionsFeature/ContributionsFeature.Infrastructure/ContributionsFeature.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/Shared/">
+    <Project Path="Shared/HRMS.Shared.Application/HRMS.Shared.Application.csproj" Id="2986d168-4e45-495e-8b00-09f1650c14e7" />
+    <Project Path="Shared/HRMS.Shared.Domain/HRMS.Shared.Domain.csproj" Id="7f46f091-c7f3-46ef-a6b8-21bc45c85ea1" />
+    <Project Path="Shared/HRMS.Shared.Infrastructure/HRMS.Shared.Infrastructure.csproj" Id="e49e71f9-9e51-49dd-bbe0-9d9086a2a412" />
+  </Folder>
+  <Folder Name="/Shared/HRMS.Shared.Core/">
+    <Project Path="Shared/HRMS.Shared.Core/HRMS.Core.HttpHelper/HRMS.Core.HttpHelper.csproj" Id="88e064c1-b81a-44ca-ba72-5b9cf9b11ba4" />
+    <Project Path="Shared/HRMS.Shared.Core/HRMS.Core.KeyVault/HRMS.Core.KeyVault.csproj" Id="d298accc-181d-4628-a1c0-1809f08d84bd" />
+    <Project Path="Shared/HRMS.Shared.Core/HRMS.Core.Postgres/HRMS.Core.Postgres.csproj" Id="e5f6a7b8-c9d0-1234-ef01-345678901234" />
+    <Project Path="Shared/HRMS.Shared.Core/HRMS.Core.Telemetry/HRMS.Core.Telemetry.csproj" Id="70179bd1-adcd-4e57-90d0-e5dc380643b2" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="Tests/HRMS.UnitTests/HRMS.UnitTests.csproj" />
+  </Folder>
+</Solution>
